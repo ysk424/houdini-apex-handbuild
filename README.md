@@ -1,5 +1,7 @@
 # houdini-apex-handbuild
 
+▶ **Watch the companion video:** https://youtu.be/QuLa9eOgQNc
+
 Building an APEX-rigged character in Houdini **without using the APEX Autorig Builder**, driven by a code-capable LLM (Claude Code, Gemini, GPT Codex) over MCP.
 
 This is a five-month investigation log distilled into a reproducible procedure. It is **not** a maintained library. Issues are welcome; responses are best-effort.
@@ -66,7 +68,7 @@ This procedure depends on three things you bring yourself:
 
 ## Companion video
 
-A short Azure-TTS-narrated overview is on YouTube: *(URL pending publication)*. The video exists primarily as a search-engine entry point. Full procedure lives in this repo — the video points back here for the LLM-driven reproduction.
+A short Azure-TTS-narrated overview is on YouTube: https://youtu.be/QuLa9eOgQNc. The video exists primarily as a search-engine entry point. Full procedure lives in this repo — the video points back here for the LLM-driven reproduction.
 
 ---
 
