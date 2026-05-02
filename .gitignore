@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# Houdini
+*.bgeo
+*.bgeo.sc
+*.hip
+*.hipnc
+*.hiplc
+*.hda~
+backup/
+houdini.log
+*.crash.log
+
+# Editors
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Local secrets / config
+.env
+.claude/
+.mcp.json
+
+# Generated assets (re-built from sources, never committed)
+samples/*.fbx
+samples/*.bgeo*
+samples/cache/
+
+# Video render artifacts
+video/render/
+video/audio/*.wav
+video/audio/*.mp3
+*.mp4
