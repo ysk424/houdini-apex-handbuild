@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="'Inter','Helvetica Neue',sans-serif">
+  <rect width="1920" height="1080" fill="#0a0a14"/>
+
+  <text x="960" y="320" font-size="40" fill="#a0a0c0" text-anchor="middle">Repository</text>
+  <text x="960" y="420" font-size="56" font-weight="600" fill="#6ec1ff" text-anchor="middle" font-family="Consolas,monospace">github.com/ysk424/</text>
+  <text x="960" y="490" font-size="56" font-weight="600" fill="#6ec1ff" text-anchor="middle" font-family="Consolas,monospace">houdini-apex-handbuild</text>
+
+  <line x1="560" y1="560" x2="1360" y2="560" stroke="#4a5568" stroke-width="2"/>
+
+  <text x="960" y="660" font-size="44" fill="#e8e8f0" text-anchor="middle">Reproduce.    Comment.    PR.</text>
+
+  <text x="960" y="820" font-size="22" fill="#888899" text-anchor="middle">All diagrams in this video: SVG in /video/figures/</text>
+  <text x="960" y="855" font-size="22" fill="#888899" text-anchor="middle">Polished versions assisted by Claude Design (Anthropic Labs)</text>
+</svg>

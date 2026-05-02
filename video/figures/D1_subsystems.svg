@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="'Inter','Helvetica Neue',sans-serif">
+  <rect width="1920" height="1080" fill="#0a0a14"/>
+
+  <text x="960" y="100" font-size="56" font-weight="600" fill="#ffffff" text-anchor="middle">D1  Three subsystems</text>
+  <text x="960" y="150" font-size="28" fill="#a0a0c0" text-anchor="middle">Character pipeline - Animation pipeline - LLM/MCP control plane</text>
+
+  <!-- Three columns -->
+  <g>
+    <!-- Character -->
+    <rect x="80" y="240" width="540" height="700" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="14"/>
+    <rect x="80" y="240" width="540" height="80" fill="#1a2540" stroke="#6ec1ff" stroke-width="2" rx="14"/>
+    <text x="350" y="295" font-size="36" font-weight="600" fill="#ffffff" text-anchor="middle">Character pipeline</text>
+
+    <text x="350" y="380" font-size="26" fill="#e8e8f0" text-anchor="middle">FBX import</text>
+    <text x="350" y="420" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">fbxcharacterimport</text>
+
+    <text x="350" y="490" font-size="26" fill="#e8e8f0" text-anchor="middle">+ Tag joints</text>
+    <text x="350" y="530" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">AAAA -> tag_skeleton</text>
+
+    <text x="350" y="600" font-size="26" fill="#e8e8f0" text-anchor="middle">+ Pack character</text>
+    <text x="350" y="640" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">apex_pack</text>
+
+    <text x="350" y="710" font-size="26" fill="#e8e8f0" text-anchor="middle">+ APEX components</text>
+    <text x="350" y="750" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">fktransform</text>
+    <text x="350" y="780" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">bonedeform</text>
+    <text x="350" y="810" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">multiik (with IK)</text>
+
+    <text x="350" y="900" font-size="22" fill="#6ec1ff" text-anchor="middle">Detail: D2</text>
+
+    <!-- Animation -->
+    <rect x="690" y="240" width="540" height="700" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="14"/>
+    <rect x="690" y="240" width="540" height="80" fill="#2a1a40" stroke="#c060ff" stroke-width="2" rx="14"/>
+    <text x="960" y="295" font-size="36" font-weight="600" fill="#ffffff" text-anchor="middle">Animation pipeline</text>
+
+    <text x="960" y="380" font-size="26" fill="#e8e8f0" text-anchor="middle">FBX import</text>
+    <text x="960" y="420" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">fbxanimimport</text>
+
+    <text x="960" y="490" font-size="26" fill="#e8e8f0" text-anchor="middle">+ Skeleton remap</text>
+    <text x="960" y="530" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">delete_anim_twists</text>
+    <text x="960" y="560" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">rename_anim_lowpoly</text>
+    <text x="960" y="590" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">fix_paths_aw</text>
+
+    <text x="960" y="660" font-size="26" fill="#e8e8f0" text-anchor="middle">+ Bone deform</text>
+    <text x="960" y="700" font-size="22" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">walk_bone_deform</text>
+
+    <text x="960" y="770" font-size="26" fill="#e8e8f0" text-anchor="middle">-> viewport</text>
+
+    <text x="960" y="900" font-size="22" fill="#c060ff" text-anchor="middle">Detail: D3</text>
+
+    <!-- Control plane -->
+    <rect x="1300" y="240" width="540" height="700" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="14"/>
+    <rect x="1300" y="240" width="540" height="80" fill="#1a3a1a" stroke="#7fdb7f" stroke-width="2" rx="14"/>
+    <text x="1570" y="295" font-size="36" font-weight="600" fill="#ffffff" text-anchor="middle">LLM/MCP control</text>
+
+    <text x="1570" y="380" font-size="26" fill="#e8e8f0" text-anchor="middle">You (operator)</text>
+
+    <text x="1570" y="450" font-size="32" fill="#7fdb7f" text-anchor="middle">|</text>
+
+    <text x="1570" y="500" font-size="26" fill="#e8e8f0" text-anchor="middle">Code-LLM</text>
+    <text x="1570" y="535" font-size="22" fill="#a0a0c0" text-anchor="middle">(Claude Code, etc.)</text>
+
+    <text x="1570" y="600" font-size="32" fill="#7fdb7f" text-anchor="middle">|</text>
+
+    <text x="1570" y="650" font-size="26" fill="#e8e8f0" text-anchor="middle">houdini-mcp server</text>
+
+    <text x="1570" y="715" font-size="32" fill="#7fdb7f" text-anchor="middle">|</text>
+
+    <text x="1570" y="760" font-size="26" fill="#e8e8f0" text-anchor="middle">Houdini (with plugin)</text>
+
+    <text x="1570" y="900" font-size="22" fill="#7fdb7f" text-anchor="middle">Detail: D4</text>
+  </g>
+
+  <text x="960" y="1010" font-size="22" fill="#a0a0c0" text-anchor="middle">All three run in parallel - operator only steers the leftmost (LLM) column</text>
+</svg>

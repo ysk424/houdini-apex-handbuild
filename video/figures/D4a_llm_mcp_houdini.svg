@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="'Inter','Helvetica Neue',sans-serif">
+  <defs>
+    <marker id="arrowdown" markerWidth="14" markerHeight="14" refX="7" refY="13" orient="auto">
+      <polygon points="0,0 14,0 7,14" fill="#7fdb7f"/>
+    </marker>
+    <marker id="arrowup" markerWidth="14" markerHeight="14" refX="7" refY="1" orient="auto">
+      <polygon points="0,14 14,14 7,0" fill="#a0a0c0"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#0a0a14"/>
+
+  <text x="960" y="100" font-size="56" font-weight="600" fill="#ffffff" text-anchor="middle">D4-a  LLM / MCP / Houdini stack</text>
+  <text x="960" y="150" font-size="28" fill="#a0a0c0" text-anchor="middle">Four layers - you only talk to the top one</text>
+
+  <!-- Layer 1: You -->
+  <rect x="560" y="220" width="800" height="140" fill="#1a3a1a" stroke="#7fdb7f" stroke-width="3" rx="14"/>
+  <text x="960" y="275" font-size="36" font-weight="600" fill="#ffffff" text-anchor="middle">You (operator)</text>
+  <text x="960" y="320" font-size="22" fill="#c0e0c0" text-anchor="middle">Speak natural language. Paste prompts.</text>
+  <text x="960" y="350" font-size="22" fill="#c0e0c0" text-anchor="middle">Read results. Make decisions.</text>
+
+  <line x1="960" y1="370" x2="960" y2="450" stroke="#7fdb7f" stroke-width="3" marker-end="url(#arrowdown)"/>
+  <text x="990" y="425" font-size="20" fill="#7fdb7f">prompts</text>
+
+  <!-- Layer 2: LLM -->
+  <rect x="560" y="460" width="800" height="140" fill="#1a2540" stroke="#6ec1ff" stroke-width="3" rx="14"/>
+  <text x="960" y="515" font-size="36" font-weight="600" fill="#ffffff" text-anchor="middle">Code-LLM with MCP support</text>
+  <text x="960" y="560" font-size="22" fill="#a0c0e0" text-anchor="middle" font-family="Consolas,monospace">Claude Code  -  Gemini Code  -  GPT Codex  -  ...</text>
+  <text x="960" y="588" font-size="22" fill="#a0c0e0" text-anchor="middle">Reads the repo. Plans steps. Calls MCP tools.</text>
+
+  <line x1="960" y1="610" x2="960" y2="690" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrowdown)"/>
+  <text x="990" y="660" font-size="20" fill="#6ec1ff" font-family="Consolas,monospace">MCP protocol (JSON-RPC over stdio)</text>
+
+  <!-- Layer 3: MCP server -->
+  <rect x="560" y="700" width="800" height="140" fill="#2a1a40" stroke="#c060ff" stroke-width="3" rx="14"/>
+  <text x="960" y="755" font-size="36" font-weight="600" fill="#ffffff" text-anchor="middle">houdini-mcp server</text>
+  <text x="960" y="800" font-size="22" fill="#c0a0e0" text-anchor="middle" font-family="Consolas,monospace">~/git/houdini-mcp + 4 bug fixes (PR #3)</text>
+  <text x="960" y="828" font-size="22" fill="#c0a0e0" text-anchor="middle">Translates MCP requests into Houdini Python calls.</text>
+
+  <line x1="960" y1="850" x2="960" y2="920" stroke="#c060ff" stroke-width="3" marker-end="url(#arrowdown)"/>
+  <text x="990" y="895" font-size="20" fill="#c060ff" font-family="Consolas,monospace">TCP localhost:9876</text>
+
+  <!-- Layer 4: Houdini -->
+  <rect x="560" y="930" width="800" height="120" fill="#1a1a28" stroke="#ffd560" stroke-width="3" rx="14"/>
+  <text x="960" y="985" font-size="36" font-weight="600" fill="#ffffff" text-anchor="middle">Houdini (with houdini-mcp plugin)</text>
+  <text x="960" y="1025" font-size="22" fill="#e0d0a0" text-anchor="middle">Cooks SOPs. Executes Python. Renders viewport.</text>
+
+  <!-- Right side: result feedback -->
+  <line x1="450" y1="990" x2="450" y2="290" stroke="#a0a0c0" stroke-width="2" stroke-dasharray="6,6" marker-end="url(#arrowup)"/>
+  <text x="220" y="640" font-size="22" fill="#a0a0c0" transform="rotate(-90 220 640)" text-anchor="middle">results / probes / errors</text>
+</svg>

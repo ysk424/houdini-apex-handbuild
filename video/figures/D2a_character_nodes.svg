@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="'Inter','Helvetica Neue',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="13" refY="7" orient="auto">
+      <polygon points="0,0 14,7 0,14" fill="#6ec1ff"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#0a0a14"/>
+
+  <text x="960" y="100" font-size="56" font-weight="600" fill="#ffffff" text-anchor="middle">D2-a  Character pipeline (node flow)</text>
+  <text x="960" y="150" font-size="28" fill="#a0a0c0" text-anchor="middle">Six SOPs - everything stays in one Houdini scene, one geometry network</text>
+
+  <!-- Top row: fbximport + tag_skeleton -->
+  <g>
+    <rect x="120" y="270" width="380" height="120" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="12"/>
+    <text x="310" y="320" font-size="26" fill="#e8e8f0" text-anchor="middle">fbxcharacterimport1</text>
+    <text x="310" y="358" font-size="22" fill="#a0a0c0" text-anchor="middle">out0 = skin (with boneCapture)</text>
+    <text x="310" y="380" font-size="22" fill="#a0a0c0" text-anchor="middle">out1 = bind skeleton (80 joints)</text>
+
+    <line x1="500" y1="380" x2="640" y2="380" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="640" y="270" width="380" height="120" fill="#1a2540" stroke="#6ec1ff" stroke-width="2" rx="12"/>
+    <text x="830" y="320" font-size="26" fill="#e8e8f0" text-anchor="middle">tag_skeleton</text>
+    <text x="830" y="358" font-size="22" fill="#a0a0c0" text-anchor="middle">kinefx::rigattribwrangle</text>
+    <text x="830" y="380" font-size="22" fill="#6ec1ff" text-anchor="middle">snippet authored by AAAA</text>
+
+    <line x1="1020" y1="380" x2="1160" y2="380" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="1160" y="270" width="380" height="120" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="12"/>
+    <text x="1350" y="320" font-size="26" fill="#e8e8f0" text-anchor="middle">apex_pack</text>
+    <text x="1350" y="358" font-size="22" fill="#a0a0c0" text-anchor="middle">apex::packcharacter</text>
+    <text x="1350" y="380" font-size="22" fill="#a0a0c0" text-anchor="middle">skin + skel + tagged</text>
+  </g>
+
+  <!-- Down arrow -->
+  <line x1="1350" y1="390" x2="1350" y2="490" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Bottom row: 3 components -->
+  <g>
+    <rect x="1160" y="500" width="380" height="120" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="12"/>
+    <text x="1350" y="550" font-size="26" fill="#e8e8f0" text-anchor="middle">fktransform</text>
+    <text x="1350" y="585" font-size="22" fill="#a0a0c0" text-anchor="middle">apex::autorigcomponent::3.0</text>
+    <text x="1350" y="610" font-size="22" fill="#a0a0c0" text-anchor="middle">FK rotations</text>
+
+    <line x1="1160" y1="560" x2="1020" y2="560" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="640" y="500" width="380" height="120" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="12"/>
+    <text x="830" y="550" font-size="26" fill="#e8e8f0" text-anchor="middle">bonedeform</text>
+    <text x="830" y="585" font-size="22" fill="#a0a0c0" text-anchor="middle">apex::autorigcomponent::3.0</text>
+    <text x="830" y="610" font-size="22" fill="#a0a0c0" text-anchor="middle">skin deform binding</text>
+
+    <line x1="640" y1="560" x2="500" y2="560" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="120" y="500" width="380" height="120" fill="#1a2540" stroke="#6ec1ff" stroke-width="2" rx="12"/>
+    <text x="310" y="550" font-size="26" fill="#e8e8f0" text-anchor="middle">multiik</text>
+    <text x="310" y="585" font-size="22" fill="#a0a0c0" text-anchor="middle">apex::autorigcomponent::3.0</text>
+    <text x="310" y="610" font-size="22" fill="#6ec1ff" text-anchor="middle">segments via spare parm</text>
+  </g>
+
+  <!-- Annotation boxes -->
+  <g>
+    <rect x="120" y="730" width="800" height="180" fill="#1a1a28" stroke="#6ec1ff" stroke-width="1" rx="10"/>
+    <text x="520" y="770" font-size="24" font-weight="600" fill="#6ec1ff" text-anchor="middle">tag_skeleton (AAAA-authored snippet)</text>
+    <text x="140" y="810" font-size="20" fill="#e8e8f0">Per-joint VEX assigns string-array tags onto s[]@tags.</text>
+    <text x="140" y="838" font-size="20" fill="#e8e8f0">Chain tags (L_arm, R_arm, ...) and IK role tags (ik_root, ik_polevec, ik_tip)</text>
+    <text x="140" y="866" font-size="20" fill="#e8e8f0">land on specific joints. Multi-IK then queries via %tag(role) &amp; (segment).</text>
+    <text x="140" y="894" font-size="20" fill="#a0a0c0">See D2-b for the tag concept.</text>
+
+    <rect x="1000" y="730" width="800" height="180" fill="#1a1a28" stroke="#6ec1ff" stroke-width="1" rx="10"/>
+    <text x="1400" y="770" font-size="24" font-weight="600" fill="#6ec1ff" text-anchor="middle">multiik (segments parameter)</text>
+    <text x="1020" y="810" font-size="20" fill="#e8e8f0">apex::autorigcomponent::3.0 does NOT auto-surface multiik's</text>
+    <text x="1020" y="838" font-size="20" fill="#e8e8f0">segments parm. Manually add a string spare parm in the parameters3</text>
+    <text x="1020" y="866" font-size="20" fill="#e8e8f0">folder, set value to "L_arm R_arm L_leg R_leg".</text>
+    <text x="1020" y="894" font-size="20" fill="#a0a0c0">See D2-c for the parameters3 mechanism.</text>
+  </g>
+
+  <text x="960" y="990" font-size="20" fill="#a0a0c0" text-anchor="middle">All six SOPs cook silently. The work is in 'tag_skeleton' (AAAA emits VEX) and 'multiik' (segments spare parm).</text>
+</svg>

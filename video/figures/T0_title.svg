@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="'Inter','Helvetica Neue',sans-serif">
+  <rect width="1920" height="1080" fill="#0a0a14"/>
+
+  <text x="960" y="380" font-size="92" font-weight="700" fill="#ffffff" text-anchor="middle">Houdini APEX rig</text>
+  <text x="960" y="490" font-size="56" font-weight="300" fill="#6ec1ff" text-anchor="middle" font-style="italic">without the Autorig Builder</text>
+
+  <line x1="660" y1="540" x2="1260" y2="540" stroke="#4a5568" stroke-width="2"/>
+
+  <text x="960" y="610" font-size="32" fill="#a0a0c0" text-anchor="middle">5 minutes to learn  -  1 hour to reproduce</text>
+  <text x="960" y="660" font-size="28" fill="#7fdb7f" text-anchor="middle">Driven by a code-capable LLM over MCP</text>
+
+  <text x="960" y="900" font-size="26" fill="#a0a0c0" text-anchor="middle" font-family="Consolas,monospace">github.com/ysk424/houdini-apex-handbuild</text>
+  <text x="960" y="960" font-size="22" fill="#888899" text-anchor="middle">Houdini 21.0.671  -  May 2026</text>
+</svg>

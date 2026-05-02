@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="'Inter','Helvetica Neue',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="13" refY="7" orient="auto">
+      <polygon points="0,0 14,7 0,14" fill="#c060ff"/>
+    </marker>
+    <marker id="arrowg" markerWidth="14" markerHeight="14" refX="13" refY="7" orient="auto">
+      <polygon points="0,0 14,7 0,14" fill="#7fdb7f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#0a0a14"/>
+
+  <text x="960" y="100" font-size="56" font-weight="600" fill="#ffffff" text-anchor="middle">D3-a  Animation pipeline (node flow)</text>
+  <text x="960" y="150" font-size="28" fill="#a0a0c0" text-anchor="middle">FBX animation -&gt; remap to character skeleton -&gt; bone-deform skin per frame</text>
+
+  <!-- Top row: source -->
+  <g>
+    <rect x="120" y="270" width="380" height="120" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="12"/>
+    <text x="310" y="320" font-size="26" fill="#e8e8f0" text-anchor="middle">fbxanimimport1</text>
+    <text x="310" y="358" font-size="22" fill="#a0a0c0" text-anchor="middle">Cascadeur 24fps walk</text>
+    <text x="310" y="380" font-size="22" fill="#a0a0c0" text-anchor="middle">101 joints (canonical CC4)</text>
+
+    <line x1="500" y1="330" x2="640" y2="330" stroke="#c060ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="640" y="270" width="420" height="120" fill="#2a1a40" stroke="#c060ff" stroke-width="2" rx="12"/>
+    <text x="850" y="320" font-size="26" fill="#e8e8f0" text-anchor="middle">delete_anim_twists</text>
+    <text x="850" y="358" font-size="22" fill="#a0a0c0" text-anchor="middle">kinefx::deletejoints</text>
+    <text x="850" y="380" font-size="22" fill="#c060ff" text-anchor="middle">drops 8 conflicting joints, reparents</text>
+
+    <line x1="1060" y1="330" x2="1200" y2="330" stroke="#c060ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="1200" y="270" width="420" height="120" fill="#2a1a40" stroke="#c060ff" stroke-width="2" rx="12"/>
+    <text x="1410" y="320" font-size="26" fill="#e8e8f0" text-anchor="middle">rename_anim_lowpoly</text>
+    <text x="1410" y="358" font-size="22" fill="#a0a0c0" text-anchor="middle">kinefx::rigattribwrangle</text>
+    <text x="1410" y="380" font-size="22" fill="#c060ff" text-anchor="middle">renames @name only (path is read-only here)</text>
+  </g>
+
+  <!-- Down arrow -->
+  <line x1="1410" y1="390" x2="1410" y2="490" stroke="#c060ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Mid row: fix_paths -->
+  <g>
+    <rect x="1200" y="500" width="420" height="120" fill="#2a1a40" stroke="#c060ff" stroke-width="2" rx="12"/>
+    <text x="1410" y="550" font-size="26" fill="#e8e8f0" text-anchor="middle">fix_paths_aw</text>
+    <text x="1410" y="588" font-size="22" fill="#a0a0c0" text-anchor="middle">attribwrangle (NOT kinefx variant)</text>
+    <text x="1410" y="610" font-size="22" fill="#c060ff" text-anchor="middle">re_replace canonical -&gt; lowpoly in @path</text>
+
+    <line x1="1200" y1="560" x2="1060" y2="560" stroke="#c060ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="640" y="500" width="420" height="120" fill="#1a3a1a" stroke="#7fdb7f" stroke-width="2" rx="12"/>
+    <text x="850" y="540" font-size="26" fill="#e8e8f0" text-anchor="middle">walk_bone_deform</text>
+    <text x="850" y="572" font-size="22" fill="#a0a0c0" text-anchor="middle">bonedeform (classic, 3 inputs)</text>
+    <text x="850" y="595" font-size="20" fill="#7fdb7f" text-anchor="middle">in0=skin, in1=rest_skel, in2=anim_skel</text>
+    <text x="850" y="618" font-size="20" fill="#7fdb7f" text-anchor="middle">[D/R flag]</text>
+
+    <line x1="640" y1="560" x2="500" y2="560" stroke="#7fdb7f" stroke-width="3" marker-end="url(#arrowg)"/>
+
+    <rect x="120" y="500" width="380" height="120" fill="#1a1a28" stroke="#7fdb7f" stroke-width="2" rx="12"/>
+    <text x="310" y="555" font-size="32" fill="#7fdb7f" text-anchor="middle">viewport</text>
+    <text x="310" y="595" font-size="22" fill="#a0a0c0" text-anchor="middle">walking character at 24fps</text>
+  </g>
+
+  <!-- Bottom annotation -->
+  <g>
+    <rect x="120" y="730" width="800" height="240" fill="#1a1a28" stroke="#c060ff" stroke-width="1" rx="10"/>
+    <text x="520" y="770" font-size="24" font-weight="600" fill="#c060ff" text-anchor="middle">Why three remap nodes</text>
+    <text x="140" y="810" font-size="20" fill="#e8e8f0">Cascadeur exports 101 joints (canonical CC4 hierarchy).</text>
+    <text x="140" y="838" font-size="20" fill="#e8e8f0">Our character has 80 joints (low-poly variant, no Upperarm/Forearm/etc.).</text>
+    <text x="140" y="870" font-size="20" fill="#a0a0c0">delete: drop the canonical Twist01s that would collide on rename</text>
+    <text x="140" y="898" font-size="20" fill="#a0a0c0">rename: Upperarm -&gt; UpperarmTwist01 etc. (8 pairs)</text>
+    <text x="140" y="926" font-size="20" fill="#a0a0c0">fix_paths: re-derive @path strings to match new names</text>
+
+    <rect x="1000" y="730" width="800" height="240" fill="#1a1a28" stroke="#c060ff" stroke-width="1" rx="10"/>
+    <text x="1400" y="770" font-size="24" font-weight="600" fill="#c060ff" text-anchor="middle">Why classic bonedeform (not APEX)</text>
+    <text x="1020" y="810" font-size="20" fill="#e8e8f0">apex::sceneanimate / sceneinvoke return 0 points - the rig graph stays</text>
+    <text x="1020" y="838" font-size="20" fill="#e8e8f0">"abstract" (1 node, 1 output port) even after autorigcomponent SOPs.</text>
+    <text x="1020" y="870" font-size="20" fill="#e8e8f0">The compile step from abstract -&gt; operational rig is unsolved.</text>
+    <text x="1020" y="900" font-size="20" fill="#ffd560">PRs welcome - see open question D6.</text>
+    <text x="1020" y="940" font-size="20" fill="#a0a0c0">For now: bonedeform bypasses the APEX scene system and just works.</text>
+  </g>
+
+  <text x="960" y="1020" font-size="20" fill="#a0a0c0" text-anchor="middle">Bind by name. After remap, 80/80 character joints have a match in the animation skeleton.</text>
+</svg>

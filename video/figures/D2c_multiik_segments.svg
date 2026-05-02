@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="'Inter','Helvetica Neue',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="13" refY="7" orient="auto">
+      <polygon points="0,0 14,7 0,14" fill="#6ec1ff"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#0a0a14"/>
+
+  <text x="960" y="100" font-size="56" font-weight="600" fill="#ffffff" text-anchor="middle">D2-c  multiik segments  -  the parameters3 trick</text>
+  <text x="960" y="150" font-size="28" fill="#a0a0c0" text-anchor="middle">apex::autorigcomponent::3.0 hides component parms - manually surface them as spare parms</text>
+
+  <!-- Left: what doesn't work -->
+  <g>
+    <rect x="80" y="240" width="860" height="380" fill="#1a1a28" stroke="#ff6060" stroke-width="2" rx="14"/>
+    <text x="510" y="290" font-size="32" font-weight="600" fill="#ff6060" text-anchor="middle">What does NOT work</text>
+
+    <text x="120" y="350" font-size="22" fill="#e8e8f0">- Press the "Reload Setup Parms" button</text>
+    <text x="120" y="390" font-size="22" fill="#a0a0c0">  -> button cooks but no segments parm appears</text>
+
+    <text x="120" y="440" font-size="22" fill="#e8e8f0">- Add to "Promoted Parms" multiparm + reload</text>
+    <text x="120" y="480" font-size="22" fill="#a0a0c0">  -> registered but never surfaces</text>
+
+    <text x="120" y="530" font-size="22" fill="#e8e8f0">- Patch the rig graph after cook (apex.Graph)</text>
+    <text x="120" y="570" font-size="22" fill="#a0a0c0">  -> rig graph has only 1 abstract node, nothing to patch</text>
+
+    <text x="510" y="610" font-size="22" font-weight="600" fill="#ff6060" text-anchor="middle">All three documented as dead ends.</text>
+  </g>
+
+  <!-- Right: what works -->
+  <g>
+    <rect x="980" y="240" width="860" height="380" fill="#1a1a28" stroke="#7fdb7f" stroke-width="2" rx="14"/>
+    <text x="1410" y="290" font-size="32" font-weight="600" fill="#7fdb7f" text-anchor="middle">What WORKS</text>
+
+    <text x="1020" y="350" font-size="22" fill="#e8e8f0">Add a string spare parm in the "Parameters" folder</text>
+    <text x="1020" y="380" font-size="22" fill="#a0a0c0">(folder path: Component / Component Parameters / Parameters)</text>
+
+    <rect x="1020" y="410" width="780" height="160" fill="#0a0a14" stroke="#4a5568" stroke-width="1" rx="8"/>
+    <text x="1040" y="445" font-size="20" fill="#7fdb7f" font-family="Consolas,monospace">node.parmTemplateGroup().appendToFolder(</text>
+    <text x="1040" y="475" font-size="20" fill="#7fdb7f" font-family="Consolas,monospace">  ('Component', 'Component Parameters', 'Parameters'),</text>
+    <text x="1040" y="505" font-size="20" fill="#7fdb7f" font-family="Consolas,monospace">  hou.StringParmTemplate(</text>
+    <text x="1040" y="535" font-size="20" fill="#7fdb7f" font-family="Consolas,monospace">    name='segments', label='Segments',</text>
+    <text x="1040" y="565" font-size="20" fill="#7fdb7f" font-family="Consolas,monospace">    default_value=('L_arm R_arm L_leg R_leg',)))</text>
+  </g>
+
+  <!-- Bottom: data flow -->
+  <text x="960" y="690" font-size="32" font-weight="600" fill="#6ec1ff" text-anchor="middle">Data flow once the spare parm exists</text>
+
+  <g>
+    <rect x="120" y="730" width="280" height="100" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="10"/>
+    <text x="260" y="770" font-size="22" fill="#e8e8f0" text-anchor="middle">SOP UI</text>
+    <text x="260" y="800" font-size="20" fill="#a0a0c0" text-anchor="middle">parameters3 folder</text>
+    <text x="260" y="822" font-size="20" fill="#6ec1ff" text-anchor="middle" font-family="Consolas,monospace">segments</text>
+
+    <line x1="400" y1="780" x2="500" y2="780" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="500" y="730" width="320" height="100" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="10"/>
+    <text x="660" y="770" font-size="22" fill="#e8e8f0" text-anchor="middle">HDA child: get_parms</text>
+    <text x="660" y="800" font-size="20" fill="#a0a0c0" text-anchor="middle">attribfromparm SOP</text>
+    <text x="660" y="822" font-size="20" fill="#a0a0c0" text-anchor="middle">picks up ALL spare parms</text>
+
+    <line x1="820" y1="780" x2="920" y2="780" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="920" y="730" width="320" height="100" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="10"/>
+    <text x="1080" y="770" font-size="22" fill="#e8e8f0" text-anchor="middle">HDA child: PARMS</text>
+    <text x="1080" y="800" font-size="20" fill="#a0a0c0" text-anchor="middle">null SOP, detail dict</text>
+    <text x="1080" y="822" font-size="20" fill="#6ec1ff" text-anchor="middle" font-family="Consolas,monospace">parms.segments</text>
+
+    <line x1="1240" y1="780" x2="1340" y2="780" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="1340" y="730" width="380" height="100" fill="#1a3a1a" stroke="#7fdb7f" stroke-width="2" rx="10"/>
+    <text x="1530" y="770" font-size="22" fill="#e8e8f0" text-anchor="middle">HDA child: editgraph1</text>
+    <text x="1530" y="800" font-size="20" fill="#a0a0c0" text-anchor="middle">runs apex script, instantiates</text>
+    <text x="1530" y="822" font-size="20" fill="#a0a0c0" text-anchor="middle">multiik with segments value</text>
+  </g>
+
+  <text x="960" y="930" font-size="22" fill="#a0a0c0" text-anchor="middle">aaaa.component_parms.set_component_parms(node_path='/obj/geo1/multiik', parms={'segments': '...'})</text>
+  <text x="960" y="970" font-size="20" fill="#a0a0c0" text-anchor="middle">does this idempotently. Pre-built helper in the AAAA snapshot.</text>
+</svg>

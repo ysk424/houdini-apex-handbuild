@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="'Inter','Helvetica Neue',sans-serif">
+  <rect width="1920" height="1080" fill="#0a0a14"/>
+
+  <text x="960" y="100" font-size="56" font-weight="600" fill="#ffffff" text-anchor="middle">D2-b  AAAA tag concept</text>
+  <text x="960" y="150" font-size="28" fill="#a0a0c0" text-anchor="middle">Each joint receives a sorted string array of tags - chain membership + IK role</text>
+
+  <!-- Headers -->
+  <g>
+    <text x="350" y="240" font-size="32" font-weight="600" fill="#6ec1ff" text-anchor="middle">Joint name</text>
+    <text x="900" y="240" font-size="32" font-weight="600" fill="#6ec1ff" text-anchor="middle">s[]@tags</text>
+    <text x="1450" y="240" font-size="32" font-weight="600" fill="#6ec1ff" text-anchor="middle">Used by</text>
+  </g>
+
+  <line x1="80" y1="265" x2="1840" y2="265" stroke="#4a5568" stroke-width="2"/>
+
+  <!-- Rows: each joint with its tags + consumer -->
+  <g font-family="Consolas,monospace">
+    <!-- Row 1 -->
+    <text x="120" y="320" font-size="24" fill="#e8e8f0">CC_Base_Pelvis</text>
+    <text x="900" y="320" font-size="24" fill="#7fdb7f" text-anchor="middle">["spine"]</text>
+    <text x="1450" y="320" font-size="22" fill="#a0a0c0" text-anchor="middle">spine FK (no IK roles)</text>
+
+    <!-- Row 2 -->
+    <text x="120" y="370" font-size="24" fill="#e8e8f0">CC_Base_L_Clavicle</text>
+    <text x="900" y="370" font-size="24" fill="#7fdb7f" text-anchor="middle">["L_arm"]</text>
+    <text x="1450" y="370" font-size="22" fill="#a0a0c0" text-anchor="middle">L_arm chain (FK only)</text>
+
+    <!-- Row 3 highlighted -->
+    <rect x="80" y="395" width="1760" height="50" fill="#1a2540" stroke="#6ec1ff" stroke-width="1" rx="6"/>
+    <text x="120" y="430" font-size="24" fill="#ffffff">CC_Base_L_UpperarmTwist01</text>
+    <text x="900" y="430" font-size="24" fill="#ffd560" text-anchor="middle">["L_arm", "ik_root"]</text>
+    <text x="1450" y="430" font-size="22" fill="#ffd560" text-anchor="middle">multiik root for L_arm</text>
+
+    <!-- Row 4 highlighted -->
+    <rect x="80" y="455" width="1760" height="50" fill="#1a2540" stroke="#6ec1ff" stroke-width="1" rx="6"/>
+    <text x="120" y="490" font-size="24" fill="#ffffff">CC_Base_L_ForearmTwist01</text>
+    <text x="900" y="490" font-size="24" fill="#ffd560" text-anchor="middle">["L_arm", "ik_polevec"]</text>
+    <text x="1450" y="490" font-size="22" fill="#ffd560" text-anchor="middle">multiik pole vector for L_arm</text>
+
+    <!-- Row 5 highlighted -->
+    <rect x="80" y="515" width="1760" height="50" fill="#1a2540" stroke="#6ec1ff" stroke-width="1" rx="6"/>
+    <text x="120" y="550" font-size="24" fill="#ffffff">CC_Base_L_Hand</text>
+    <text x="900" y="550" font-size="24" fill="#ffd560" text-anchor="middle">["L_arm", "ik_tip"]</text>
+    <text x="1450" y="550" font-size="22" fill="#ffd560" text-anchor="middle">multiik IK tip for L_arm</text>
+
+    <!-- Row 6 -->
+    <text x="120" y="600" font-size="24" fill="#e8e8f0">CC_Base_L_UpperarmTwist02</text>
+    <text x="900" y="600" font-size="24" fill="#7fdb7f" text-anchor="middle">["L_arm"]</text>
+    <text x="1450" y="600" font-size="22" fill="#a0a0c0" text-anchor="middle">L_arm chain (FK twist)</text>
+
+    <!-- Row 7 -->
+    <text x="120" y="650" font-size="24" fill="#e8e8f0">CC_Base_FacialBone</text>
+    <text x="900" y="650" font-size="24" fill="#888899" text-anchor="middle">[]</text>
+    <text x="1450" y="650" font-size="22" fill="#a0a0c0" text-anchor="middle">orphan (warning, not error)</text>
+  </g>
+
+  <line x1="80" y1="680" x2="1840" y2="680" stroke="#4a5568" stroke-width="2"/>
+
+  <!-- Bottom: how multiik queries -->
+  <g>
+    <rect x="120" y="730" width="1680" height="240" fill="#1a1a28" stroke="#6ec1ff" stroke-width="2" rx="14"/>
+    <text x="960" y="775" font-size="28" font-weight="600" fill="#6ec1ff" text-anchor="middle">How multi-IK consumes the tags</text>
+    <text x="960" y="825" font-size="22" fill="#a0a0c0" text-anchor="middle">For each segment in segments = "L_arm R_arm L_leg R_leg",</text>
+    <text x="960" y="855" font-size="22" fill="#a0a0c0" text-anchor="middle">multiik queries the rig with three Houdini group expressions:</text>
+
+    <text x="960" y="910" font-size="26" fill="#ffd560" text-anchor="middle" font-family="Consolas,monospace">%tag(ik_root) &amp; (L_arm)   ->  CC_Base_L_UpperarmTwist01</text>
+    <text x="960" y="940" font-size="26" fill="#ffd560" text-anchor="middle" font-family="Consolas,monospace">%tag(ik_polevec) &amp; (L_arm) ->  CC_Base_L_ForearmTwist01</text>
+    <text x="120" y="0"/>
+  </g>
+
+  <text x="960" y="1030" font-size="22" fill="#a0a0c0" text-anchor="middle">All authored from external JSON. Re-run any time. Idempotent. Different rigs = different JSON.</text>
+</svg>

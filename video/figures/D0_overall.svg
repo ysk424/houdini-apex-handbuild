@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="'Inter','Helvetica Neue',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="13" refY="7" orient="auto">
+      <polygon points="0,0 14,7 0,14" fill="#6ec1ff"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#0a0a14"/>
+
+  <text x="960" y="100" font-size="56" font-weight="600" fill="#ffffff" text-anchor="middle">D0  Overall picture</text>
+  <text x="960" y="150" font-size="28" fill="#a0a0c0" text-anchor="middle">Four inputs - one procedure - one walking character</text>
+
+  <!-- Inputs row -->
+  <g>
+    <rect x="120" y="280" width="320" height="160" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="14"/>
+    <text x="280" y="335" font-size="28" fill="#e8e8f0" text-anchor="middle">FBX Character</text>
+    <text x="280" y="380" font-size="22" fill="#a0a0c0" text-anchor="middle">CC4 lowpoly,</text>
+    <text x="280" y="410" font-size="22" fill="#a0a0c0" text-anchor="middle">80 joints + skin</text>
+
+    <rect x="500" y="280" width="320" height="160" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="14"/>
+    <text x="660" y="335" font-size="28" fill="#e8e8f0" text-anchor="middle">FBX Animation</text>
+    <text x="660" y="380" font-size="22" fill="#a0a0c0" text-anchor="middle">Cascadeur walk,</text>
+    <text x="660" y="410" font-size="22" fill="#a0a0c0" text-anchor="middle">50 frames @ 24fps</text>
+
+    <rect x="1100" y="280" width="320" height="160" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="14"/>
+    <text x="1260" y="335" font-size="28" fill="#e8e8f0" text-anchor="middle">Code-LLM</text>
+    <text x="1260" y="380" font-size="22" fill="#a0a0c0" text-anchor="middle">Claude Code, Gemini,</text>
+    <text x="1260" y="410" font-size="22" fill="#a0a0c0" text-anchor="middle">GPT Codex (any MCP)</text>
+
+    <rect x="1480" y="280" width="320" height="160" fill="#1a1a28" stroke="#4a5568" stroke-width="2" rx="14"/>
+    <text x="1640" y="335" font-size="28" fill="#e8e8f0" text-anchor="middle">This Repo</text>
+    <text x="1640" y="380" font-size="22" fill="#6ec1ff" text-anchor="middle" font-family="Consolas,monospace">houdini-apex-</text>
+    <text x="1640" y="410" font-size="22" fill="#6ec1ff" text-anchor="middle" font-family="Consolas,monospace">handbuild</text>
+  </g>
+
+  <!-- Arrows down -->
+  <line x1="280" y1="450" x2="700" y2="600" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="660" y1="450" x2="850" y2="600" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1260" y1="450" x2="1080" y2="600" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1640" y1="450" x2="1230" y2="600" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Procedure -->
+  <rect x="560" y="610" width="800" height="160" fill="#1a2540" stroke="#6ec1ff" stroke-width="3" rx="14"/>
+  <text x="960" y="670" font-size="32" font-weight="600" fill="#ffffff" text-anchor="middle">6-phase Procedure</text>
+  <text x="960" y="715" font-size="24" fill="#a0a0c0" text-anchor="middle">Setup - Character - Tags - Components - Segments - Animation</text>
+  <text x="960" y="750" font-size="22" fill="#6ec1ff" text-anchor="middle" font-family="Consolas,monospace">LLM-driven via MCP</text>
+
+  <!-- Arrow to output -->
+  <line x1="960" y1="780" x2="960" y2="870" stroke="#6ec1ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Output -->
+  <rect x="660" y="880" width="600" height="140" fill="#1a3a1a" stroke="#7fdb7f" stroke-width="3" rx="14"/>
+  <text x="960" y="935" font-size="32" font-weight="600" fill="#ffffff" text-anchor="middle">Walking character</text>
+  <text x="960" y="975" font-size="22" fill="#c0e0c0" text-anchor="middle">in Houdini viewport, ready for further animation</text>
+</svg>
